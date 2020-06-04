@@ -6,8 +6,15 @@ metadata:
     app: mssql
 spec:
   containers:
-  - name: mssql_linux
-    image: mcr.microsoft.com/mssql/server:2019-latest
+  - name: mssqllinux
+    image: mcr.microsoft.com/mssql/server:2019-CU4-ubuntu-16.04
     ports:
-    - name: nodejs-port
+    - name: mssql-port
       containerPort: 1433
+    env:
+      - name: ACCEPT_EULA
+        value: Y
+      - name: SA_PASSWORD
+        value: Strong(!)Password
+      - name: MSSQL_PID
+        value: Express
